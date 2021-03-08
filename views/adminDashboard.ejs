@@ -1,0 +1,18 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome Admin: <%= user.name %></p>
+<p>Current Sessions:</p>
+<div>
+    <ul>
+        <% activeSessions.forEach(function(session){ %>
+            <li style="list-style: none;">
+                <form method="POST" action="/user">
+                    <p>sessionID: <%= session.sessionID %></p>
+                    <p>userID: <%= session.userID %></p>
+                    <input type="hidden" name="sessionID" value=<%= session.sessionID %> />
+                    <button>Revoke Session </button>
+                </form>
+            </li>
+        <% })%>
+    </ul>
+</div>
+<a href="/auth/logout" class="btn btn-secondary">Logout</a>
